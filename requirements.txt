@@ -1,0 +1,4 @@
+selenium
+unidecode
+bs4
+geocoder
