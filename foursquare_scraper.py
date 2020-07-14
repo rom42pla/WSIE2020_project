@@ -12,7 +12,8 @@ from pprint import pprint
 
 seeds = ["201739388"]
 frontier, visited = list(copy.deepcopy(seeds)), set()
-pois_filepath, users_filepath, frontier_filepath = "pois_file.json", "users_file.json", "frontier.json"
+assets_folder = "./assets"
+pois_filepath, users_filepath, frontier_filepath = f"{assets_folder}/4square_pois_file.json", "{assets_folder}/4square_users_4square.json", "{assets_folder}/4square_frontier.json"
 pois, users = {}, {}
 
 if os.path.isfile(pois_filepath) and os.path.isfile(users_filepath) and os.path.isfile(frontier_filepath):
