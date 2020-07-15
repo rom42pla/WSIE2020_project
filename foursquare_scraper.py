@@ -32,6 +32,7 @@ while len(frontier) > 0:
     if user_id in visited: 
         continue
     visited.add(user_id)
+    frontier_set = set(frontier)
     user = {
         "infos": {},
         "pois": [],
@@ -79,7 +80,7 @@ while len(frontier) > 0:
         followers = json.loads(r.text)["response"]["followers"]["items"]
         for follower_user in followers:
             follower_user_id = follower_user["user"]["id"]
-            if follower_user_id not in frontier and follower_user_id not in visited:
+            if follower_user_id not in frontier_set and follower_user_id not in visited:
                 frontier += [follower_user_id]
             user["followers"] += [follower_user_id]
 
@@ -88,7 +89,7 @@ while len(frontier) > 0:
         following = json.loads(r.text)["response"]["following"]["items"]
         for following_user in following:
             following_user_id = following_user["user"]["id"]
-            if following_user_id not in frontier and following_user_id not in visited:
+            if following_user_id not in frontier_set and following_user_id not in visited:
                 frontier += [following_user_id]
             user["followings"] += [following_user_id]
 
